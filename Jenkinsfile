@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Initialize')
-    {
-        def dockerHome = tool 'MyDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
     stage('Checkout Source') {
         steps {
             git url:'https://github.com/alexnguyenit/mobile-service.git', branch:'master'

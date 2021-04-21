@@ -1,10 +1,10 @@
 ---
-apiVersion: apps/v1
+apiVersion: v1
 kind: Deployment
 metadata:
   name: mobileservice
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: hello-whale-app

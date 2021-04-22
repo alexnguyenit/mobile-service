@@ -1,24 +1,16 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: deployapp
+  name: rss-site
+  labels:
+    app: web
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: deployapp
-  template:
-    metadata:
-      name: podapp
-      labels:
-        app: deployapp
-    spec:
-      containers:
-        - name: node
-          image: ichte/swarmtest:node
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "100m"
-          ports:
-            - containerPort: 8085
+  containers:
+    - name: front-end
+      image: nginx
+      ports:
+        - containerPort: 80
+    - name: rss-reader
+      image: nickchase/rss-php-nginx:v1
+      ports:
+        - containerPort: 88

@@ -1,16 +1,9 @@
-from flask import Flask, request, jsonify
-import os
-
-# Init app
+from flask import Flask
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
 
-@app.route('/', methods=['GET'])
-def get():
-    return jsonify({'msg': 'Hello World'})
+@app.route("/")
+def hello():
+    return "Hello from Python!"
 
-# Run Server
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')

@@ -26,6 +26,7 @@ pipeline {
 //             }
 //         }
 //     }
+
     stage('Deploy App') {
         agent any
 //         agent { label 'kubepod' }
@@ -33,10 +34,12 @@ pipeline {
             script {
 //                 kubernetesDeploy(configs: "kubefile.yml", kubeconfigId: "mykubeconfig")
                 withKubeConfig([credentialsId: 'KubeSecret', serverUrl: 'https://183.91.11.119:6443']) {
-                  sh 'kubectl apply -f kubefile.yml'
+                    sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'
+                    sh 'chmod u+x ./kubectl'
+                    sh './kubectl get pods'
+                    sh './kubectl apply -f kubefile.yml'
                 }
             }
-
         }
     }
   }

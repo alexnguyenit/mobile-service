@@ -1,12 +1,14 @@
 pipeline {
-  agent { label 'kubepod' }
+  agent none
   stages {
     stage('Checkout Source') {
+        agent any
         steps {
             git url:'https://github.com/alexnguyenit/mobile-service.git', branch:'master'
         }
     }
     stage("Build image") {
+        agent any
         steps {
             script {
                 myapp = docker.build("hoangnguyenngoctb/mobileservice:${env.BUILD_ID}")
@@ -14,6 +16,7 @@ pipeline {
         }
     }
     stage("Push image") {
+        agent any
         steps {
             script {
                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
@@ -24,6 +27,7 @@ pipeline {
         }
     }
     stage('Deploy App') {
+        agent { label 'kubepod' }
         steps {
             script {
                 kubernetesDeploy(configs: "kubefile.yml", kubeconfigId: "mykubeconfig")

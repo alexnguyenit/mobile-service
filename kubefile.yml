@@ -1,40 +1,24 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mobileservice
+  name: deployapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-whale-app
-      version: blue
+      app: deployapp
   template:
     metadata:
-      name: mobileservice-pod
+      name: podapp
       labels:
-        app: mobileservice-app
-        version: blue
+        app: deployapp
     spec:
       containers:
-      - name: mobileservice-container
-        image: hoangnguyenngoctb/mobileservice:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 5000
----
-apiVersion: v1
-kind: Service 
-metadata:
-  name: mobileservice-svc
-  labels:
-    app: mobileservice-app
-spec:
-  selector:
-    app: mobileservice-app
-    version: blue
-  type: NodePort
-  ports:
-  - nodePort: 30500
-    port: 5000
-    targetPort: 5000
+        - name: node
+          image: ichte/swarmtest:node
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+          ports:
+            - containerPort: 8085

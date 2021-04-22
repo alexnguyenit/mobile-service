@@ -14,7 +14,7 @@ spec:
       name: mobileservice-pod
       labels:
         app: mobileservice-app
-        version: blue
+        version: v1.0.1
     spec:
       containers:
       - name: mobileservice-container

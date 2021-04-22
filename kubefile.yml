@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mobileservice-container
-        image: hoangnguyenngoctb/mobileservice:51
+        image: hoangnguyenngoctb/mobileservice:tagVersion
         imagePullPolicy: Always
         ports:
         - containerPort: 3000

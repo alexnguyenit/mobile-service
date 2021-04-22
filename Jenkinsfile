@@ -7,25 +7,25 @@ pipeline {
             git url:'https://github.com/alexnguyenit/mobile-service.git', branch:'master'
         }
     }
-    stage("Build image") {
-        agent any
-        steps {
-            script {
-                myapp = docker.build("hoangnguyenngoctb/mobileservice:${env.BUILD_ID}")
-            }
-        }
-    }
-    stage("Push image") {
-        agent any
-        steps {
-            script {
-                docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-                        myapp.push("latest")
-                        myapp.push("${env.BUILD_ID}")
-                }
-            }
-        }
-    }
+//     stage("Build image") {
+//         agent any
+//         steps {
+//             script {
+//                 myapp = docker.build("hoangnguyenngoctb/mobileservice:${env.BUILD_ID}")
+//             }
+//         }
+//     }
+//     stage("Push image") {
+//         agent any
+//         steps {
+//             script {
+//                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
+//                         myapp.push("latest")
+//                         myapp.push("${env.BUILD_ID}")
+//                 }
+//             }
+//         }
+//     }
     stage('Deploy App') {
         agent { label 'kubepod' }
         steps {

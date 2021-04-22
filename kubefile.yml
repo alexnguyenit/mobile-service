@@ -8,13 +8,11 @@ spec:
   selector:
     matchLabels:
       app: mobileservice-app
-      version: v1.0.1
   template:
     metadata:
       name: mobileservice-pod
       labels:
         app: mobileservice-app
-        version: v1.0.1
     spec:
       containers:
       - name: mobileservice-container
@@ -32,9 +30,8 @@ metadata:
 spec:
   selector:
     app: mobileservice-app
-    version: v1.0.1
   type: NodePort
   ports:
-  - nodePort: 30500
+  - nodePort: 31500
     port: 5000
     targetPort: 5000

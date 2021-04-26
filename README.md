@@ -2,19 +2,14 @@
 ## Version
 1.0.1
 ## Python Version
-Python 3.9.2
+Python >= 3.8
 
 ## Deploy App
 
 ### Install library with local
 ```
-pip install env
-pipenv shell
-pipenv install flask flask-sqlalchemy flask-marshmallow marshmallow-sqlalchemy
-```
-or file in docker
-```
 pip3 freeze > requirements.txt
+pip3 install -r requirements.txt
 ```
 ### Build an image
 ```

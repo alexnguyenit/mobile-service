@@ -34,3 +34,7 @@ docker rm $(docker ps -aq)
 ```
 "C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
 ```
+### Remove cache file git
+```
+git rm env.local --cached
+```

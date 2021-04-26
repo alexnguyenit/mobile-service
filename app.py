@@ -22,15 +22,19 @@ class User(db.Model):
     email: str
     password: str
 
-    id = db.Column(db.Integer, primary_key=True, auto_increment=True)
+    id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(64), unique=True)
     password = db.Column(db.String(128))
 
-
 @app.route("/")
-def hello():
+def index():
+    return jsonify({
+        "version": '1.0.0'
+    })
+
+@app.route("/users")
+def users():
     users = User.query.all()
-    print(users)
     return jsonify(users)
 
 if __name__ == "__main__":

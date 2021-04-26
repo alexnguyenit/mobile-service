@@ -13,11 +13,11 @@ pip3 install -r requirements.txt
 ```
 ### Build an image
 ```
-docker build --tag python-docker .
+docker build --tag hoangnguyenngoctb/mobileservice .
 ```
 ### Tag image
 ```
-docker tag python-docker:latest python-docker:v1.0.0
+docker tag hoangnguyenngoctb/mobileservice:latest hoangnguyenngoctb/mobileservice:v1.0.1
 ```
 ### Run container
 ```

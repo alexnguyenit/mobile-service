@@ -13,11 +13,11 @@ pip3 install -r requirements.txt
 ```
 ### Build an image
 ```
-docker build --tag python-docker .
+docker build --tag hoangnguyenngoctb/mobileservice .
 ```
 ### Tag image
 ```
-docker tag python-docker:latest python-docker:v1.0.0
+docker tag hoangnguyenngoctb/mobileservice:latest hoangnguyenngoctb/mobileservice:v1.0.1
 ```
 ### Run container
 ```
@@ -33,4 +33,8 @@ docker rm $(docker ps -aq)
 ### Error Docker in windows
 ```
 "C:\Program Files\Docker\Docker\DockerCli.exe" -SwitchDaemon
+```
+### Remove cache file git
+```
+git rm env.local --cached
 ```

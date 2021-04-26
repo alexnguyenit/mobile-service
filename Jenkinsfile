@@ -5,9 +5,6 @@ pipeline {
         agent any
         steps {
             git url:'https://github.com/alexnguyenit/mobile-service.git', branch:'master'
-            gv = load "script.groovy"
-            DOCKER_TAG = gv.getDockerTag()
-            echo "${DOCKER_TAG}"
         }
     }
 //     stage("Build image") {

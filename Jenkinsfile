@@ -32,6 +32,7 @@ pipeline {
 //         agent { label 'kubepod' }
         steps {
             script {
+                sh "chmod +x changeTag.sh"
                 sh "./changeTag.sh ${GIT_TAG}"
 //                 kubernetesDeploy(configs: "kubefile.yml", kubeconfigId: "mykubeconfig")
                 withKubeConfig([credentialsId: 'KubeSecret', serverUrl: 'https://183.91.11.119:6443']) {

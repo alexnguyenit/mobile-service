@@ -29,7 +29,8 @@ class User(db.Model):
 @app.route("/")
 def index():
     return jsonify({
-        "version": '1.0.0'
+        "version": '1.0.1',
+        "message": 'Hello World'
     })
 
 @app.route("/users")
